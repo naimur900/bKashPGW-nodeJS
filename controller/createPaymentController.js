@@ -3,8 +3,8 @@ const { axiosPost } = require("./postController");
 const dotenv = require("dotenv");
 dotenv.config();
 
-var app_key = process.env.APP_KEY;
-var base_URL = process.env.BASE_URL;
+const app_key = process.env.APP_KEY;
+const base_URL = process.env.BASE_URL;
 
 
 const createPayment = async (req, res) => {
@@ -22,18 +22,25 @@ const createPayment = async (req, res) => {
       intent: "sale",
       merchantInvoiceNumber: "INV123",
     };
+
     const headers = {
       Authorization: token,
       "X-APP-Key": app_key,
     };
+
     const data = await axiosPost(`${base_URL}/create`, payload, headers);
-    // res.status(200).json({
-    //   status: true,
-    //   message: data,
-    // });
-    res.send(data);
+
+    res.status(200).json({
+      status: true,
+      message: data,
+    });
+    // res.send(data);
   } catch (error) {
-    return error;
+    console.error("Error in createPayment:", error);
+    res.status(500).json({
+      status: false,
+      message: error.message || "Internal Server Error",
+    });
   }
 };
 module.exports = { createPayment };

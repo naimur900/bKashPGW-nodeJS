@@ -13,6 +13,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+// TO ALLOW REQUEST FROM SPECIFIC ENDPOINT
 // let corsOptions = {
 //     origin: "http://localhost:3000",
 //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204

@@ -1,7 +1,4 @@
-const {axiosPost} = require("./postController")
-// const dotenv = require("dotenv")
-// dotenv.config()
-
+const { axiosPost } = require("./postController");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -45,4 +42,4 @@ const refreshToken = async (
   return data;
 };
 
-module.exports = {grantToken, refreshToken}
+module.exports = { grantToken, refreshToken };
